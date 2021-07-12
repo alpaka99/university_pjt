@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "club/css/post_detail.css" %} ">
+    <section id="board">
+    {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+            <a class="{{ message.tags }}">{{ message }}</a>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="post">
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.created_date }}
+            </div>
+        {% endif %}
+        <a class="btn btn-default" href="{% url 'club:post_edit' pk=post.pk %}">edit</a>
+        <a class="btn btn-default" href="{% url 'club:post_delete' pk=post.pk %}">delete</a>
+
+
+        <h5>작성자 : {{ post.author }}</h5>
+        <h1>제목: {{ post.title }}</h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+        {% if post.image %}
+        <img src="{{ post.image.url }}" alt="no images included">
+        {% endif %}
+
+    </div>
+    <div class="page-header">
+
+            <h5><a href="{% url 'club:index' %}" class="move-to-base">게시판으로 이동</a></h5>
+            <h5><a href="{% url 'club:comment_new' pk=post.pk  %}" class="top-menu">댓글 작성하기</a></h5>
+    </div>
+     <div class="content-container">
+
+            {%  if latest_comment %}
+                <h4>댓글란</h4>
+                <ul>
+
+                {% for comment in latest_comment %}
+                    <div id="comment">
+                    <li>"{{ comment.text}}" <br>wrote by : {{ comment.author }}
+                        <a class="btn btn-default" href="{% url 'club:comment_edit' pk=comment.pk %}">edit</a> <a class="btn btn-default" href="{% url 'club:comment_delete' pk=comment.pk %}">delete</a>
+                        </li>
+                    <br>
+                    </div>
+
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="row">
+                <div class="col-md-8">
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

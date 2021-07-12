@@ -1,0 +1,13 @@
+
+{% extends 'base/base.html' %}
+{% block content %}
+<h1>전공을 고르세요</h1>
+<!-- Arranging majors -->
+{% if majors %}
+    <ul>
+    {% for major in majors %}
+        <li><a href="{% url 'curriculum:select_major' major.id %}">{{ major.major_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

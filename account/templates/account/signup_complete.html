@@ -1,0 +1,7 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<h1>회원가입을 축하합니다!</h1>
+<p>{{ user.username }}님, 회원가입을 축하합니다!</p>
+<p>가입 아이디: {{ user.username }}</p>
+<a href="{% url 'home:main' %}">홈으로</a>
+{% endblock %}

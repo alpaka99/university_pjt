@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<h1>{{ sel_lecture.lecture_name }}</h1>
+<h4>Professor: {{ sel_lecture.professor }}</h4>
+<h4>Credit: {{ sel_lecture.score }}</h4>
+<h4>Book: {{ sel_lecture.book }}</h4>
+<h3>Review List</h3>
+<hr>
+{% if reviewlist %}
+    <ul>
+    {% for review in reviewlist %}
+    {% if review.author == request.user%}
+        <li>{{ review.class_review_text }}<br>작성자:{{ review.author }}/원전공:{{ review.major1 }}, 부전공:{{ review.major2 }}<a class="btn btn-default" href="{% url 'curriculum:del_review' sel_major.id sel_lecture.id review.id %}">x</a></li>
+    {% else %}
+        <li>{{ review.class_review_text }}<br>작성자:{{ review.author }}/원전공:{{ review.major1 }}, 부전공:{{ review.major2 }}</li>
+    {% endif %}
+    {% endfor %}
+    </ul>
+{% else %}
+    <h4>No reviews available.</h4>
+{% endif %}
+<hr>
+<a class="btn btn-default" href="{% url 'curriculum:add_review' sel_major.id sel_lecture.id %}">Add Review</a>
+{% endblock %}

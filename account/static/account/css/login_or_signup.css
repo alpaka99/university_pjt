@@ -1,0 +1,19 @@
+#login_or_sigup{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#login_or_signup h1{
+    font-family: italic;
+}
+#login_or_sigup a{
+    text-decoration: underline;
+    font-size:20px;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+}
+
+#login_or_sigup a:hover{
+    background-color: powderblue;
+    color: white;
+}

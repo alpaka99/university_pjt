@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "account/css/login_or_signup.css" %}">
+<div id="login_or_sigup">
+    <h1>Are you a client or a visitor?</h1>
+    <br>
+    <a href="{% url 'account:signup' %}">SIGN   UP!</a>
+    <br>
+    <a href="{% url 'account:login' %}">L O G I N</a>
+</div>
+{% endblock %}

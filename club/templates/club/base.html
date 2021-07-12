@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+    {% load static %}
+     <link rel="stylesheet" href="{% static "club/css/base2.css" %}">
+
+        <div class="content-container">
+            {%  if latest_post %}
+                <ul>
+                <p id="title_club">동아리 홍보글</p>
+                    <hr>
+                {% for post in latest_post %}
+                    <li><a href="{%  url 'club:post_detail' pk=post.pk %}">{{ post.title}}</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="row">
+                <div class="col-md-8">
+                    
+                </div>
+            </div>
+        </div>
+    <div class="page-header">
+            <a href="{% url 'club:post_new'  %}" class="top-menu">글 작성하기<span class="glyphicon glyphicon-plus"></span></a>
+        </div>
+
+{% endblock %}

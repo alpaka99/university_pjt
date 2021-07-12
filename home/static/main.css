@@ -1,0 +1,8 @@
+#main{
+    display:flex;
+    font-family:"Times New Roman" ;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 25px;
+}

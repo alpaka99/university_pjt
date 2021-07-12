@@ -1,0 +1,61 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href={% static "majorreviews/css/detail.css" %}>
+  <ul class="messages">
+    {% if messages %}
+      {% for message in messages %}
+    <li class="{{ message.tags }}">
+    {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
+    </li>
+{% endfor %}
+  {% endif %}
+        </ul>
+
+  <div class="" id="reviews">
+      {% if user.is_authenticated %}
+      <p id="title-majorreviews">제목: {{ review.title_text }}</p>
+               <ul id="user">
+      <li>작성자 : {{  review.author }}</li>
+      <li>원전공: {{ review.major_1 }}</li>
+      <li>복수전공: {{ review.major_2 }}</li>
+        </ul>
+          <hr>
+
+
+          <p id="content">내용: {{ review.review_text }}</p>
+
+          <a class="btn btn-default" href="{% url 'majorreviews:edit' pk=review.pk %}">게시글 수정</a>
+          <a class="btn btn-default" href="{% url 'majorreviews:delete' pk=review.pk %}">게시글 삭제</a>
+          {% else %}
+          <p>로그인 후 이용해주세요</p>
+      {% endif %}
+
+
+
+
+  <hr>
+  <a id="make-comment" class="btn btn-default" href="{% url 'majorreviews:comment_write' pk=review.pk%}">댓글달기</a>
+{% for comment in review.comments.all %}
+    <div id="text">
+    <ul id="comment">
+        <li><strong>ID: {{ comment.author }}</strong></li>
+        <li>원전공: {{ comment.major_1 }}</li>
+        <li>복수전공: {{ comment.major_2 }}</li>
+        <li>{{ comment.created_date }}</li>
+    </ul>
+
+        <p>댓글내용: {{ comment.review_comment }}</p>
+        {% if user.is_authenticated %}
+        <a href="{% url 'majorreviews:comment_edit' pk=comment.pk %}" class="btn btn-default" >댓글수정</a>
+        <a href="{% url 'majorreviews:comment_delete' pk=comment.pk %}" class="btn btn-default" >댓글삭제</a></li>
+        {% endif %}
+
+    </div>
+{% empty %}
+    <p>No comments here yet :(</p>
+{% endfor %}
+
+  </div>
+
+  {% endblock %}

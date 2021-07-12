@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+      {% load static %}
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'account/css/base.css' %}">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js">
+
+    </script>
+
+
+    <title></title>
+  </head>
+  <body>
+
+  <div class="" id="upper">
+    <p></p>
+      <a href="{% url "home:main" %}"><p id="title">InEngineering</p></a>
+      <a href="{% url "home:main"%}"><img src="{% static "account/images/logo.jpg"%}" alt="cannot load image" id="logo"></a>
+      {% if user.is_active %}
+    <a href="{% url "account:logout" %}" id="register_logout">로그아웃</a>
+      {% else %}
+    <a href="{% url "account:login_or_signup" %}" id="register_login">회원가입 / 로그인</a>
+    {% endif %}
+
+
+  </div>
+
+  <div class="" id="nav">
+    <ul>
+      <li><a href="{% url 'club:index' %}">동아리 홍보</a></li>
+      <li><a href="{% url 'curriculum:index' %}">커리큘럼 정보</a></li>
+      <li><a href="{% url 'majorreviews:index'%}">복수전공 후기</a></li>
+    </ul>
+  </div>
+      {% block content %}
+      {% endblock %}
+
+
+
+
+
+  <footer>
+    <p>모든 콘텐츠는 무단으로 복제하거나 재판매를 금지합니다 Copyright &copy by team6-InEngineering
+    올에이쁠기원 홈페이지 대문</p>
+  </footer>
+
+  <script type="text/javascript" src={% static "account/images/JScode.js" %}>
+  </script>
+
+  </body>
+</html>

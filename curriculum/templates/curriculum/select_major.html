@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<!-- 고른 전공 이름을 맨 위에 표시 -->
+    <h1>{{ sel_major.major_name }}</h1>
+<!-- 전공에 있는 강의 목록 표시, 학년별 구분-->
+{% if lecturelist %}
+    {% for i in year %}
+        <h2>Year{{ i }}</h2>
+        <ul>
+        {% for lecture in lecturelist %}
+            {% if lecture.year == i %}
+                <li><a href="{% url 'curriculum:review' sel_major.id lecture.id %}">{{ lecture.lecture_name }}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% endfor %}
+{% endif %}
+{% endblock %}

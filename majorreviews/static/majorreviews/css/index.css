@@ -1,0 +1,15 @@
+ol{
+    list-style-image: url(../images/check.png);
+    font-size: 20px;
+    font-weight: bold;
+}
+ul {
+    list-style: none;
+    background-color: beige;
+
+}
+
+
+#index{
+    border:1px dashed gainsboro;
+}

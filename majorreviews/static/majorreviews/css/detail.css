@@ -1,0 +1,50 @@
+#user{
+    list-style: none;
+    display:flex;
+    flex-direction: row;
+
+    text-decoration: underline;
+}
+
+#user li{
+    padding:10px;
+}
+
+#title-majorreviews{
+    font-size: 40px;
+    text-decoration: underline;
+    color: #258051;
+}
+
+#reviews a:hover{
+    background-color: grey;
+    color: white;
+
+}
+
+#comment{
+    display: flex;
+    padding:0px;
+    flex-direction: row;
+
+}
+#comment li{
+    margin:20px;
+    padding:0px;
+}
+#content{
+    padding:10px;
+    font-family: Serif ,"돋움";
+    font-size:20px;
+}
+#text{
+    border:0.5px solid black;
+    background-color: gainsboro;
+    margin:15px;
+}
+
+#make-comment{
+    background-color: black;
+    color:white;
+    padding:5px;
+}

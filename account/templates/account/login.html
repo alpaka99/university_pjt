@@ -1,0 +1,20 @@
+
+{% extends 'base/base.html' %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "account/css/login.css" %}">
+<div class="container">
+<p>{{ error }}</p>
+    <p>LOGIN</p>
+
+    <form id="login-form" action="{% url 'account:login' %}" method="post">
+    {% csrf_token %}
+        <label for="id">ID</label>
+        <input type="text" id="username" name="username">
+        <label for="password">PASSWORD</label>
+        <input type="password" id="password" name="password">
+        <button type="submit" class="btn btn-primary btn-block btn-flat">로그인</button>
+
+    </form>
+</div>
+{% endblock %}

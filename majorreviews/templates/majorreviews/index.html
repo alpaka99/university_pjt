@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% load static %}
+    <link rel="stylesheet" href="{% static "majorreviews/css/index.css" %}">
+{% if latest_review %}
+    <ul>
+    {% for review in latest_review %}
+        <div id="index">
+        <ol id="user">
+        <li ><a href="{% url 'majorreviews:detail' pk=review.pk %}">{{ review.title_text }}</a></li>
+        </ol>
+        <li>ID: {{ review.author }}</li>
+        <li>원전공 : {{ review.major_1 }}</li>
+        <li>복수전공 : {{ review.major_2 }}</li>
+        </div>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No majorreviews are available.</p>
+{% endif %}
+  <div>
+      <a href="{% url 'majorreviews:write' %}" class="top-menu">후기를 작성하시겠습니까?</a>
+  </div>
+
+{% endblock %}

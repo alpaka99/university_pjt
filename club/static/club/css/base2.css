@@ -1,0 +1,37 @@
+.content-container{
+    display:flex;
+    flex-direction: column;
+}
+
+.content-container ul{
+    list-style: none;
+    font-size: 20px;
+    text-align: start;
+    margin:0;
+
+
+}
+
+.content-container #title_club{
+    font-size:30px;
+    color: #2e804b;
+}
+
+.content-container li{
+    list-style-image: url(../images/ginko.png);
+}
+
+ul a:hover{
+    background-color: khaki;
+}
+
+.page-header{
+
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+
